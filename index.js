@@ -1,8 +1,6 @@
-import {BookCollection} from './modules/books'
+import  BookCollection  from './modules/books'
 
-export default  Main(()=>{
-
-  let books = new BookCollection();
+let books = new BookCollection();
 
 window.addEventListener('load', () => {
   // display the date
@@ -44,5 +42,4 @@ document.getElementById('contact-link').addEventListener('click', () => {
   document.getElementById('contact').classList.remove('hidden');
 });
 
-});
 
