@@ -1,4 +1,3 @@
-
 import { loadBooks, SaveBooks } from './modules/Save-and-load.js';
 import { addBook, removeBook, showBook } from './modules/Books.js';
 import Book from './modules/Books.js';
@@ -16,13 +15,12 @@ window.addEventListener('load', () => {
       //to be used in the parent component
       document.getElementById('book-cont').appendChild(showBook(element));
     });
-  }else{
+  } else {
     // no books found
     books = []
   }
-  
-});
 
+});
 
 document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -57,5 +55,3 @@ document.getElementById('contact-link').addEventListener('click', () => {
   document.getElementById('form').classList.add('hidden');
   document.getElementById('contact').classList.remove('hidden');
 });
-
-

@@ -1,20 +1,19 @@
 import { loadBooks, SaveBooks } from './Save-and-load.js';
 
 export default class Book {
-  constructor(id, title, author){
+  constructor(id, title, author) {
     this.id = id;
     this.title = title;
     this.author = author;
-    return new Object({id: this.id , title : this.title, author : this.author});
+    return new Object({ id: this.id, title: this.title, author: this.author });
   }
 }
-
 
 export const addBook = (element, books) => {
 
   books.push(element);
   // save books to local storage
-  SaveBooks(books,'books');
+  SaveBooks(books, 'books');
   alert('Book saved');
 
 }
@@ -51,6 +50,5 @@ export const showBook = (book) => {
     removeBook(book.id, loadBooks('books'));
   });
   div.appendChild(element);
-
   return div;
 }
