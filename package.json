@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/chiztechnology/Awesome-books/issues"
   },
-  "homepage": "https://github.com/chiztechnology/Awesome-books#readme"
+  "homepage": "https://github.com/chiztechnology/Awesome-books#readme",
+  "dependencies": {
+    "luxon": "^3.1.1"
+  }
 }

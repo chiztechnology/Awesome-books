@@ -1,25 +1,41 @@
-import  BookCollection  from './modules/books'
 
-let books = new BookCollection();
+import { loadBooks, SaveBooks } from './modules/Save-and-load.js';
+import { addBook, removeBook, showBook } from './modules/Books.js';
+import Book from './modules/Books.js';
+import showTime from "./modules/Datetime.js";
+
+let books = [];
 
 window.addEventListener('load', () => {
   // display the date
-  document.getElementById('date').innerText = new Date().toUTCString();
+  showTime()
   // fetch data from local storage
-  if (JSON.parse(localStorage.getItem('books')) !== null) {
-    books = new BookCollection(JSON.parse(localStorage.getItem('books')));
-    books.books.forEach((element) => {
-      BookCollection.showBook(element);
+  books = loadBooks('books');
+  if (books !== null) {
+    books.forEach((element) => {
+      //to be used in the parent component
+      document.getElementById('book-cont').appendChild(showBook(element));
     });
-  } else {
-    books = new BookCollection();
+  }else{
+    // no books found
+    books = []
   }
+  
 });
 
 
 document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault();
-  books.addBook(document.getElementById('title').value, document.getElementById('author').value);
+  let tempBooks = [];
+  tempBooks = loadBooks('books');
+  const newId = tempBooks.length === 0 ? 0 : tempBooks[tempBooks.length - 1].id + 1;
+
+  let element = new Book(newId, document.getElementById('title').value, document.getElementById('author').value);
+
+  addBook(element, loadBooks('books'));
+  // Refresh The content on the page later;
+  document.getElementById('book-cont').appendChild(showBook(element));
+
   document.getElementById('title').value = '';
   document.getElementById('author').value = '';
 });
