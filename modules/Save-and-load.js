@@ -4,7 +4,7 @@ export const loadBooks = (key) => {
     books = JSON.parse(localStorage.getItem(key));
     return books;
   }
-  return null;
+  return [];
 };
 
 export const SaveBooks = (books, key) => {
