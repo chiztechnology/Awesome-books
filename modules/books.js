@@ -5,27 +5,22 @@ export default class Book {
     this.id = id;
     this.title = title;
     this.author = author;
-    return new Object({ id: this.id, title: this.title, author: this.author });
+    return { id: this.id, title: this.title, author: this.author };
   }
 }
 
 export const addBook = (element, books) => {
-
   books.push(element);
   // save books to local storage
   SaveBooks(books, 'books');
-  alert('Book saved');
-
-}
+};
 
 export const removeBook = (id, books) => {
   const newArray = books.filter((element) => element.id !== id);
   // save to local storage 
   SaveBooks(newArray, 'books');
-  alert('Book removed');
   // then return newArray
-
-}
+};
 
 export const showBook = (book) => {
   let element;
@@ -51,4 +46,4 @@ export const showBook = (book) => {
   });
   div.appendChild(element);
   return div;
-}
+};

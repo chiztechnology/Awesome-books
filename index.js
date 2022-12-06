@@ -1,25 +1,23 @@
-import { loadBooks, SaveBooks } from './modules/Save-and-load.js';
-import { addBook, removeBook, showBook } from './modules/Books.js';
-import Book from './modules/Books.js';
-import showTime from "./modules/Datetime.js";
+import { loadBooks } from './modules/Save-and-load.js';
+import Book, { addBook, showBook } from './modules/Books.js';
+import showTime from './modules/Datetime.js';
 
 let books = [];
 
 window.addEventListener('load', () => {
   // display the date
-  showTime()
+  showTime();
   // fetch data from local storage
   books = loadBooks('books');
   if (books !== null) {
     books.forEach((element) => {
-      //to be used in the parent component
+      // to be used in the parent component
       document.getElementById('book-cont').appendChild(showBook(element));
     });
   } else {
     // no books found
-    books = []
+    books = [];
   }
-
 });
 
 document.getElementById('form').addEventListener('submit', (e) => {
@@ -28,7 +26,7 @@ document.getElementById('form').addEventListener('submit', (e) => {
   tempBooks = loadBooks('books');
   const newId = tempBooks.length === 0 ? 0 : tempBooks[tempBooks.length - 1].id + 1;
 
-  let element = new Book(newId, document.getElementById('title').value, document.getElementById('author').value);
+  const element = new Book(newId, document.getElementById('title').value, document.getElementById('author').value);
 
   addBook(element, loadBooks('books'));
   // Refresh The content on the page later;
