@@ -3,7 +3,8 @@ export const loadBooks = (key) => {
   if (JSON.parse(localStorage.getItem(key)) !== null) {
     books = JSON.parse(localStorage.getItem(key));
     return books;
-  } 
+  }
+  return null;
 };
 
 export const SaveBooks = (books, key) => {

@@ -17,7 +17,7 @@ export const addBook = (element, books) => {
 
 export const removeBook = (id, books) => {
   const newArray = books.filter((element) => element.id !== id);
-  // save to local storage 
+  // save to local storage
   SaveBooks(newArray, 'books');
   // then return newArray
 };
